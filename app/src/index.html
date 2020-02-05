@@ -2,22 +2,79 @@
 <html>
 
 <head>
-    <title>Mortgage Blockchain Demo</title>
+    <title>Property Loan Demo</title>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-    .margin-top-1 {
-      margin-top: 1em;
+        .fixed-top {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1030;
     }
+        .margin-top-1 {
+        margin-top: 1em;
+        border-color: #ddd;
+        }
+        .spin-c {
+          margin-right: 2020px; 
+       }
+        .btn-reject {
+          background-color: red!important;
+          border-color: red!important;
+        }
+        .btn-receipt {
+        background-color: rgb(133, 149, 158) !important;
+        border-color: rgb(133, 149, 158) !important;
+        }
+        .panel-primary {
+        border-color: #ddd !important;
+        }
+        .panel-title {
+            color: black;
+        }
+        .h2-text {
+        color: rgb(0, 92, 132);
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        text-align: left;
+        }
+        
+        .panel-heading {
+        background-color: rgb(222, 245, 255) !important;
+        border-color: #ddd !important;
+        }
+        .btn-primary {
+          background-color: #00a546;
+          border-color: #00a546;
+        }
+        .btn-primary:hover {
+          background-color: #00a546;
+          border-color: #00a546;
+        }
+        .btn-primary:focus {
+          background-color: #028238;
+          border-color: #00a546;
+        }
+        .btn-primary:visited {
+        background-color: #00a546;
+        border-color: #00a546;
+        }
+     @media (min-width: 1200px);
+        .container {
+            width: 100%;
+        }
+
   </style>
 </head>
 
 <body class="container">
-    <h2 style="text-align:center">Mortgage Blockchain Demo</h2>
+    </h2><h2 class="h2-text">Property Loan Demo</h2>
     <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#sectionA" id="home_tab"><i class="fa fa-user"></i> Home Owner</a></li>
-        <li><a data-toggle="tab" href="#sectionB" id="bank_tab"><i class="fa fa-university"></i> Mortgage Holder</a></li>
+        <li class="active"><a data-toggle="tab" href="#sectionA" id="home_tab"><i class="fa fa-user"></i> Property Owner</a></li>
+        <li><a data-toggle="tab" href="#sectionB" id="bank_tab"><i class="fa fa-university"></i> Loan Holder</a></li>
         <li><a data-toggle="tab" href="#sectionC" id="insurer_tab"><i class="fa fa-user"></i> Insurer</a></li>
         <li><a data-toggle="tab" href="#sectionD" id="irs_tab"><i class="fa fa-suitcase"></i> IRS</a></li>
     </ul>
@@ -59,11 +116,6 @@
                                     <tr>
                                         <td>Address</td>
                                         <td id="sectionAAddress"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Transaction Hash</td>
-                                        <td id="sectionATxnHash">
-                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Status</td>
@@ -136,7 +188,7 @@
                     <div class="col-md-6">
                         <div class="panel panel-primary text-center">
                             <div class="panel-heading">
-                                <h3 class="panel-title">Mortgage Calculator</h3>
+                                <h3 class="panel-title">Calculate Loan Payoff</h3>
                             </div>
                             <div class="panel-body">
                                 <table class="table table-striped">
@@ -172,10 +224,17 @@
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td style="text-align:left"></td>
+                                            <td>
+                                                <div style="height:35px"></div> 
+                                            </td>
+                                        </tr>
+                                        <tr>
                                             <td colspan="2">
                                                 <button id="calulate" class="btn btn-primary" onClick="dosum()">Calculate</button>
                                             </td>
                                         </tr>
+                                        
                                     </tbody>
                                 </table>
                             </div>
@@ -193,23 +252,24 @@
                         <div class="panel-body">
                             <div>
                                 <button id="getMonthlyPayment" class="btn btn-primary" onClick="">Make monthly payment</button>
-                                <button id="completePayment" class="btn btn-primary" onClick="">Complete mortgage payoff</button>
+                                <button id="completePayment" class="btn btn-primary" onClick="">Complete loan payoff</button>
                             </div>
                             </br>
                             <table class="table table-striped">
                                 <tbody>
                                     <tr>
-                                        <td style="text-align:left">Mortgage Amount</td>
+                                        <td style="text-align:left">Loan Amount</td>
                                         <td>
                                             <input type="text" class="form-control" id="valueMH" onChange="truncateToDecimals(this)">
                                         </td>
-                                        <td style="text-align:left"> Mortgage Holder Account #</td>
+                                        <td style="text-align:left"> Loan Holder Account #</td>
                                         <td>
                                             <input type="text" class="form-control" id="payMHaddress" disabled="disabled" size="50">
                                         </td>
                                         <td>
                                             <button id="pay" class="btn btn-primary" onClick="makePayment($('#valueMH').val(),$('#payMHaddress').val());">Send</button>
                                         </td>
+                                        <td id="payReciptMH"></td>
                                     </tr>
                                     <tr>
                                         <td style="text-align:left">Insurance Amount</td>
@@ -223,6 +283,7 @@
                                         <td>
                                             <button id="pay" class="btn btn-primary" onClick="makePayment($('#valueIssurer').val(),$('#payIssureraddress').val());">Send</button>
                                         </td>
+                                        <td id="payReciptIns"></td>
                                     </tr>
                                     <tr>
                                         <td style="text-align:left">Tax Amount</td>
@@ -236,6 +297,7 @@
                                         <td>
                                             <button id="pay" class="btn btn-primary" onClick="makePayment($('#valueIRS').val(),$('#payIRSaddress').val());">Send</button>
                                         </td>
+                                        <td id="payReciptIrs"></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -257,7 +319,7 @@
                                 <td id="bankAccount"></td>
                             </tr>
                             <tr>
-                                <td>Total Mortgage Amount</td>
+                                <td>Total Loan Amount</td>
                                 <td id="totalBankBalance">
                                 </td>
                             </tr>
@@ -294,9 +356,10 @@
                                       </td>
                                   </tr>
                                   <tr>
-                                      <td>
+                                      <div>
                                           <button id="approveLoan" class="btn btn-primary">Approve Loan</button>
-                                      </td>
+                                          <button id="rejectLoan" class="btn btn-primary btn-reject">Reject Loan</button>
+                                      </div>
                                       <td></td>
                                   </tr>
                               </tbody>
@@ -467,6 +530,49 @@
                         <button id="modalClose" class="btn btn-primary">Close</button>
                     </center>
                 </div>
+            </div>
+    
+    
+        </div>
+        <div id="modalPaymentReceipt" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <center>
+                        <div class="modal-header">
+                                <h4 class="modal-title">Receipt Details</h4>
+                        </div>
+                                <div class="modal-body">
+                                        <table class="table table-striped">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Paid Amount</td>
+                                                    <td id="paidValue"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>From Address</td>
+                                                    <td><i class="fa fa-address-card"></i> <a id="fromAddr"></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>To Address</td>
+                                                    <td><i class="fa fa-address-card"></i> <a id="toAddr"></a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tx Id</td>
+                                                    <td><i class="fa fa-address-card"></i> <a id="txId"></a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tx Fee</td>
+                                                    <td id="gasFee">
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                               </div>
+                            <button id="modalCloseReceipt" class="btn btn-primary">Close</button>
+                   </center>
+              </div>
             </div>
         </div>
     </div>
