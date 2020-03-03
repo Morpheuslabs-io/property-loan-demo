@@ -9,6 +9,8 @@ var loanInstance;
 var txHashMH;
 var txHashIns;
 var txHashIrs;
+var childKycWindow;
+var timer;
 
 
 function sleep(ms) {
@@ -103,6 +105,20 @@ function getStatus() {
 
    }
     );
+}
+window.submitKyc = function () {
+    $('#sectionKStatus').html('Initiated');
+    $('#sectionLStatus').html('Initiated');
+    childKycWindow = window.open(constants.KYC_SERVICE,'KYC SUBMISSION','menubar=no,top=150,left=150,width=1200,height=600');
+    timer = setInterval(checkChild, 500);
+    $('#sectionKStatus').html('Completed');
+    $('#sectionLStatus').html('Completed');
+}
+
+function checkChild() {
+    if (childKycWindow.closed) {
+        clearInterval(timer);
+    }
 }
 
 function workingStatus() {
@@ -382,6 +398,7 @@ window.onload = async () =>  {
       );
     Mortgage = new web3.eth.Contract(artifactMortgage.abi);
     */
+
     const web3 = new Web3(window.ethereum);
     await window.ethereum.enable();
     web3.eth.getAccounts(function(err, accs) {

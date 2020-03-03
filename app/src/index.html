@@ -104,6 +104,30 @@
                 <div class="panel-body">
                     <div>
                         <div>
+                            <button id="submitKyc" onclick="submitKyc()" class="btn btn-primary">Submit KYC Data</button>
+                        </div>
+                        </br>
+                        <div>
+                            <table class="table table-striped">
+                                <tbody>
+                                    <tr>
+                                        <th colspan="2" style="text-align:left">KYC Status</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Status</td>
+                                        <td id="sectionKStatus">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-body">
+                    <div>
+                        <div>
                             <button id="deployLoanContract" class="btn btn-primary">Initiate Loan Contract</button>
                         </div>
                         </br>
@@ -343,6 +367,14 @@
                       <div>
                           <table class="table table-striped">
                               <tbody>
+                                  <tr>
+                                      <th colspan="2" style="text-align:left">KYC Status</th>
+                                  </tr>
+                                  <tr>
+                                      <td>Status</td>
+                                      <td id="sectionLStatus">
+                                      </td>
+                                  </tr>
                                   <tr>
                                       <th colspan="2" style="text-align:left">Loan Contract</th>
                                   </tr>
