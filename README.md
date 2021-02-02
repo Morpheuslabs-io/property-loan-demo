@@ -1,4 +1,4 @@
-# Propery Loan Demo
+# Propery Loan example
 
 Run on development env
 
