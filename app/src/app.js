@@ -1,5 +1,4 @@
 var Web3 = require('web3');
-var constants = require('../lib/constants');
 var accounts, ownerAccount, bankAccount, insurerAccount, irsAccount;
 var defaultGas = 4700000;
 var loanContractAddress;
@@ -11,7 +10,11 @@ var txHashIrs;
 var childKycWindow;
 var timer;
 
-
+console.log("loading environment...");
+console.log(process.env.BANK_ACCOUNT);
+console.log(process.env.INSURER_ACCOUNT);
+console.log(process.env.IRS_ACCOUNT);
+console.log(process.env.KYC_SERVICE);
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
@@ -411,9 +414,9 @@ window.onload = async () =>  {
         }
         accounts = accs;
         ownerAccount = accounts[0];
-        bankAccount = constants.BANK_ACCOUNT;
-        insurerAccount = constants.INSURER_ACCOUNT;
-        irsAccount = constants.IRS_ACCOUNT;
+        bankAccount = process.env.BANK_ACCOUNT;
+        insurerAccount = process.env.INSURER_ACCOUNT;
+        irsAccount = process.env.IRS_ACCOUNT;
         $('#ownerAccount').html(ownerAccount);
         $('#bankAccount').html(bankAccount);
         $('#insurerAccount').html(insurerAccount);
