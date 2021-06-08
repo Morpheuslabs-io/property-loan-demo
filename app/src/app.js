@@ -1,5 +1,4 @@
 var Web3 = require('web3');
-//const artifactMortgage = require('../../build/contracts/Mortgage.json');
 var constants = require('../lib/constants');
 var accounts, ownerAccount, bankAccount, insurerAccount, irsAccount;
 var defaultGas = 4700000;
@@ -109,7 +108,7 @@ function getStatus() {
 window.submitKyc = function () {
     $('#sectionKStatus').html('Initiated');
     $('#sectionLStatus').html('Initiated');
-    childKycWindow = window.open(constants.KYC_SERVICE,'KYC SUBMISSION','menubar=no,top=150,left=150,width=1200,height=600');
+    childKycWindow = window.open(process.env.KYC_SERVICE,'KYC SUBMISSION','menubar=no,top=150,left=150,width=1200,height=600');
     timer = setInterval(checkChild, 500);
     $('#sectionKStatus').html('Completed');
     $('#sectionLStatus').html('Completed');
