@@ -13,7 +13,7 @@ cd property-loan-demo/app
 npm install
 ```
 # Using environment variable two ways
-Option1
+Option1:
 Create a .env file in the following example and replace the address with your ones
 ```
 BANK_ACCOUNT=0x89320617EA7cD3FF692ACe34db05AF55Ff44f53E
@@ -23,7 +23,7 @@ KYC_SERVICE=https://myservice-10658-test.morpheuslabs.io/
 
 ```
 
-Option2
+Option2:
 Define in the workspace settings the environment variables
 
 ```
